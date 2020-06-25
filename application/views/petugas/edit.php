@@ -3,11 +3,17 @@
 	<h4>Data Petugas</h4>
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-			<li class="breadcrumb-item"><a href="#">Petugas</a></li>
-			<li class="breadcrumb-item active" aria-current="page">Tambah</li>
+			<li class="breadcrumb-item"><a href="<?= site_url("dashboard") ?>">Dashboard</a></li>
+			<li class="breadcrumb-item"><a href="<?= site_url("petugas") ?>">Petugas</a></li>
+			<li class="breadcrumb-item active" aria-current="page">Edit</li>
 		</ol>
 	</nav>
+
+	<?php if ($this->session->flashdata('message')) : ?>
+		<div class="alert alert-<?= $this->session->flashdata('theme') ?>" role="alert">
+			<?= $this->session->flashdata('message'); ?>
+		</div>
+	<?php endif; ?>
 
 	<div class="card mt-2">
 		<div class="card-header">
@@ -18,7 +24,7 @@
 			<form action="<?= site_url("petugas/edit") ?>" method="post">
 				<div class="form-group">
 					<label for="idPetugas">ID Petugas</label>
-					<input type="text" class="form-control" id="idPetugas" readonly name="id_petugas" value="<?= $row->id_petugas ?>">
+					<input type="number" class="form-control" id="idPetugas" readonly name="id_petugas" value="<?= $row->id_petugas ?>">
 				</div>
 				<div class="form-group">
 					<label for="username">Username</label>

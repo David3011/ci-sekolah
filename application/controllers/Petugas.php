@@ -6,7 +6,7 @@ class Petugas extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Petugas_model');
+		$this->load->model(array('Petugas_model', 'Guru_model'));
 	}
 
 	public function index()
@@ -46,10 +46,23 @@ class Petugas extends CI_Controller {
 			];
 
 			if ($password == $ulang_password) {
-				$this->Petugas_model->create($data);
-				redirect('petugas');
+				$affected = $this->Petugas_model->create($data);
+
+				if ($affected > 0) {
+					$this->session->set_flashdata('theme', 'success');
+					$this->session->set_flashdata('message', 'Berhasil tambah petugas');
+					redirect("petugas");
+
+				} else {
+					$this->session->set_flashdata('theme', 'danger');
+					$this->session->set_flashdata('message', 'Gagal tambah petugas');
+					redirect("petugas/add");
+				}
+
 			} else {
-				redirect('petugas/add');
+				$this->session->set_flashdata('theme', 'info');
+				$this->session->set_flashdata('message', 'Password tidak sama');
+				redirect("petugas/add");
 			}
 
 		} else {
@@ -90,9 +103,21 @@ class Petugas extends CI_Controller {
 					$data['password'] = $password;
 				}
 
-				$this->Petugas_model->update($data, $id);
-				redirect('petugas');
+				$affected = $this->Petugas_model->update($data, $id);
+				if ($affected > 0) {
+					$this->session->set_flashdata('theme', 'success');
+					$this->session->set_flashdata('message', 'Berhasil edit petugas');
+					redirect("petugas");
+
+				} else {
+					$this->session->set_flashdata('theme', 'danger');
+					$this->session->set_flashdata('message', 'Gagal edit petugas');
+					redirect("petugas/edit/$id_petugas");
+				}
+
 			} else {
+				$this->session->set_flashdata('theme', 'info');
+				$this->session->set_flashdata('message', 'Password tidak sama');
 				redirect("petugas/edit/$id_petugas");
 			}
 
@@ -107,7 +132,26 @@ class Petugas extends CI_Controller {
 	public function delete($id)
 	{
 		$id = array('id_petugas' => $id);
-		$this->Petugas_model->delete($id);
-		redirect('petugas');
+		$affected = $this->Petugas_model->delete($id);
+		if ($affected > 0) {
+			$this->session->set_flashdata('theme', 'success');
+			$this->session->set_flashdata('message', 'Berhasil hapus petugas');
+			redirect("petugas");
+
+		} else {
+			$this->session->set_flashdata('theme', 'danger');
+			$this->session->set_flashdata('message', 'Gagal hapus petugas');
+			redirect("petugas");
+		}
+	}
+
+	public function getGuru()
+	{
+		$nip = $this->input->post('id');
+
+		$id = array('nip' => $nip);
+		$row = $this->Guru_model->getById($id)->row();
+
+		echo json_encode($row);
 	}
 }
