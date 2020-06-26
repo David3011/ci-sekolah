@@ -1,34 +1,35 @@
 <?php
-    class M_1461800048 extends CI_Model{
+    class Siswa_model extends CI_Model{
         
-        public $table = 'siswa';
-        
-        public function lihat_data(){
-            $this->db->select('nis, nama, no_tlp');
-            $this->db->from($this->table);
-            return $this->db->get();
-        }
-        
-        public function create($data){
-            $this->db->insert('siswa', $data);
-        }
-        
-        public function pilihsiswa($data){
-            return $this->db->get_where('siswa', $data)->result();
-         }
+        private $table = 'siswa';
 
+	public function get()
+	{
+		return $this->db->get($this->table);
+	}
 
-        public function delete($id){
-            $this->db->where('nis', $id);
-            $this->db->delete('siswa');
-        }
+	public function getById($id)
+	{
+		return $this->db->get_where($this->table, $id);
+	}
 
-        public function update($id, $data)
-        {
-            $this->db->where('nis', $id);
-            $this->db->update('siswa', $data);
-        }
+	public function create($data)
+	{
+		$this->db->insert($this->table, $data);
+		return $this->db->affected_rows();
+	}
 
+	public function update($data, $id)
+	{
+		$this->db->update($this->table, $data, $id);
+		return $this->db->affected_rows();
+	}
+
+	public function delete($id)
+	{
+		$this->db->delete($this->table, $id);
+		return $this->db->affected_rows();
+	}
     }
 
 ?>
