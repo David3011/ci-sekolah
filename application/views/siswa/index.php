@@ -1,123 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="container-fluid mt-4">
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Database Wibuu >v< </title> <style>
-			table {
-			border-collapse: collapse;
-			}
+	<h4>Data Siswa</h4>
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="<?= site_url("dashboard") ?>">Dashboard</a></li>
+			<li class="breadcrumb-item active" aria-current="page">Siswa</li>
+		</ol>
+	</nav>
 
-			th,
-			td {
-			text-align: left;
-			padding: 8px;
-			}
+	<?php if ($this->session->flashdata('message')) : ?>
+		<div class="alert alert-<?= $this->session->flashdata('theme') ?>" role="alert">
+			<?= $this->session->flashdata('message'); ?>
+		</div>
+	<?php endif; ?>
 
-			tr:nth-child(even) {
-			background-color: #f2f2f2
-			}
+	<a href="<?= site_url('siswa/add') ?>" class="btn btn-outline-primary"><span class="fas fa-plus"></span> Tambah</a>
 
-			th {
-			background-color: #4CAF50;
-			color: white;
-			text-align: center;
-			}
-			</style>
-</head>
-<h1>Database Wibu >v<</h1>
-<body>
-	<br>
-	<a href=<?= site_url('C_1461800048/view_tambah') ?> >Tambah Data</a>
-	<table>
-		<thead>
-			<tr>
-				<th>#</th>
-				<th>Judul Buku</th>
-				<Th>Jumlah</Th>
-				<th>Kategori</th>
-				<th>Pengarang</th>
-				<th>Penerbit</th>
-				<th>Tahun Terbit</th>
-				<th>Aksi</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php
-			$no = 1;
-			foreach($tbl_nilai as $row){ ?>
-			<tr>
-				<td><?php echo $no++ ?></td>
-				<td><?php echo $row->judul_buku ?></td>
-				<td><?php echo $row->jumlah_buku ?></td>
-				<td><?php echo $row->nama_kategori ?></td>
-				<td><?php echo $row->pengarang_buku ?></td>
-				<td><?php echo $row->nama_penerbit ?></td>
-				<td><?php echo $row->tahun_terbit_buku ?></td>
-				<td><?= anchor(site_url("C_1461800048/view_edit/").$row->kode_buku,'Ubah')?> | <?= anchor(site_url("C_1461800048/hapus/").$row->kode_buku,'Hapus')?></td>
-			</tr>
-			<?php } ?>
-		</tbody>
-	</table>
-</body>
+	<div class="card mt-2">
+		<div class="card-header">
+			Tabel Siswa
+		</div>
+		<div class="card-body">
 
-</html><!DOCTYPE html>
-<html lang="en">
+			<table id="myTable" class="table table-striped table-bordered" style="width:100%">
+				<thead>
+					<tr>
+						<th width="80px">No</th>
+						<th>NIS</th>
+						<th>Nama</th>
+						<th>Alamat</th>
+						<th>No HP</th>
+						<th width="100px">Aksi</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+						$no = 1;
+						foreach ($siswa as $row) :
+					?>
+					<tr>
+						<td><?= $no++ ?></td>
+						<td><?= $row->nis ?></td>
+						<td><?= $row->nama ?></td>
+						<td><?= $row->alamat ?></td>
+						<td><?= $row->no_tlp ?></td>
+						<td>
+							<a href="<?= site_url('siswa/edit/' . $row->nis) ?>" class="btn btn-sm btn-success"> <span class="fas fa-edit"></span> </a>
+							<a href="<?= site_url('siswa/delete/' . $row->nis) ?>" class="btn btn-sm btn-danger"> <span class="fas fa-trash-alt"></span> </a>
+						</td>
+					</tr>
+					<?php endforeach; ?>
+				</tbody>
+				<tfoot>
+					<tr>
+						<th width="80px">No</th>
+						<th>NIS</th>
+						<th>Nama</th>
+						<th>Alamat</th>
+						<th>No HP</th>
+						<th>Aksi</th>
+					</tr>
+				</tfoot>
+			</table>
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Database Wibuu >v< </title> <style>
-			table {
-			border-collapse: collapse;
-			}
+		</div>
+	</div>
 
-			th,
-			td {
-			text-align: left;
-			padding: 8px;
-			}
-
-			tr:nth-child(even) {
-			background-color: #f2f2f2
-			}
-
-			th {
-			background-color: #4CAF50;
-			color: white;
-			text-align: center;
-			}
-			</style>
-</head>
-<h1>Database Wibu >v<</h1>
-<body>
-	<br>
-	<a href=<?= site_url('Siswa/tambah') ?> >Tambah Data</a>
-	<table>
-		<thead>
-			<tr>
-				<th>#</th>
-				<th>NIS</th>
-				<Th>Nama</Th>
-				<th>No.Telp</th>
-				<th>Aksi</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php
-			$no = 1;
-			foreach($si_siswa as $row){ ?>
-			<tr>
-				<td><?php echo $no++ ?></td>
-				<td><?php echo $row->nis ?></td>
-				<td><?php echo $row->nama ?></td>
-				<td><?php echo $row->no_tlp ?></td>
-				<td><?= anchor(site_url("Siswa/ubah/").$row->nis,'Ubah')?> | <?= anchor(site_url("Siswa/hapus/").$row->nis,'Hapus')?></td>
-			</tr>
-			<?php } ?>
-		</tbody>
-	</table>
-</body>
-
-</html>
+</div>
