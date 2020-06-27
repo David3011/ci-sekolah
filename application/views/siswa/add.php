@@ -31,13 +31,20 @@
 					<input type="text" class="form-control" id="nama" name="nama">
 				</div>
 				<div class="form-group">
-					<label for="kelas">Kelas</label>
-					<input type="text" class="form-control" id="kelas" name="kelas">
+				<label for="kelas">Kelas</label>
+					<select id="kelas" name="kelas" class="form-control">
+						<option selected>Pilih...</option>
+						<option value="K001">7A</option>
+						<option value="K002">7B</option>
+						<option value="K003">7C</option>
+						<option value="K004">7D</option>
+						<option value="K005">7E</option>
+					</select>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-4">
-						<label for="password">No Telp</label>
-						<input type="text" class="form-control" id="password" name="password">
+						<label for="nohp">No Telp</label>
+						<input type="text" class="form-control" id="nohp" name="nohp">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="tempat_lahir">TTL</label>
@@ -66,6 +73,7 @@
                         <option value="Katolik">Katolik</option>
                         <option value="Hindu">Hindu</option>
                         <option value="Buddha">Buddha</option>
+						<option value="Kong Hu Cu">Kong Hu Cu</option>
 					</select>
 					</div>
 				</div>
