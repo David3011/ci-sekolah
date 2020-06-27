@@ -87,7 +87,7 @@ class Siswa extends CI_Controller {
 			$nis = $this->input->post('nis');
             $kelas = $this->input->post('kelas');
             $nama = $this->input->post('nama');
-            $tempatlahir = $this->input->post('tempatlahir');
+            $tempatlahir = $this->input->post('tempat_lahir');
             $ttl = $this->input->post('ttl');
             $agama = $this->input->post('agama');
             $gender = $this->input->post('gender');
@@ -104,14 +104,14 @@ class Siswa extends CI_Controller {
                 'agama' => $agama,
                 'gender' => $gender,
 				'alamat' => $alamat,
-				'nohp' => $nohp,
+				'no_tlp' => $nohp,
 			];
 
-				$affected = $this->Guru_model->update($data, $id);
+				$affected = $this->Siswa_model->update($data, $id);
 				if ($affected > 0) {
 					$this->session->set_flashdata('theme', 'success');
 					$this->session->set_flashdata('message', 'Berhasil edit siswa');
-					redirect("guru");
+					redirect("siswa");
 
 				} else {
 					$this->session->set_flashdata('theme', 'danger');
