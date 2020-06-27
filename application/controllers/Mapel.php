@@ -103,7 +103,7 @@ class Mapel extends CI_Controller {
 	public function delete($id)
 	{
 		$id = array('id_mapel' => $id);
-		$affected = $this->Kelas_model->delete($id);
+		$affected = $this->Mapel_model->delete($id);
 		if ($affected > 0) {
 			$this->session->set_flashdata('theme', 'success');
 			$this->session->set_flashdata('message', 'Berhasil hapus mapel');
