@@ -1,12 +1,13 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Jadwal extends CI_Controller {
+class Jadwal extends CI_Controller
+{
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Jadwal_model');
+		$this->load->model(array('Jadwal_model', 'Kelas_model', 'Mapel_model', 'Guru_model'));
 	}
 
 	public function index()
@@ -25,32 +26,31 @@ class Jadwal extends CI_Controller {
 	{
 		$data = [
 			'title' => 'Tambah Jadwal',
+			'kelas' => $this->Kelas_model->get()->result(),
+			'mapel' => $this->Mapel_model->get()->result(),
+			'guru' => $this->Guru_model->get()->result(),
 		];
 
 		$simpan = $this->input->post('simpan');
 
 		if ($simpan != "") {
-            $id_jadwal = $this->input->post('id_jadwal');
-            $id_kelas = $this->input->post('id_kelas');
-            $id_mapel = $this->input->post('id_mapel');
-            $nip = $this->input->post('nip');
-            $hari = $this->input->post('hari');
-            $jam_mulai = $this->input->post('jam_mulai');
-            $jam_akhir = $this->input->post('jam_akhir');
-			
+			$id_jadwal = $this->input->post('id_jadwal');
+			$id_kelas = $this->input->post('id_kelas');
+			$id_mapel = $this->input->post('id_mapel');
+			$nip = $this->input->post('nip');
+			$hari = $this->input->post('hari');
+			$jam_mulai = $this->input->post('jam_mulai');
+			$jam_akhir = $this->input->post('jam_akhir');
 
 			$data = [
-                'id_jadwal' => $id_jadwal,
-                'id_kelas' => $id_kelas,
-                'id_mapel' => $id_mapel,
-                'nip' => $nip,
-                'hari' => $hari,
-                'jam_mulai' => $jam_mulai,
-                'jam_akhir' => $jam_akhir,
-			
+				'id_jadwal' => $id_jadwal,
+				'id_kelas' => $id_kelas,
+				'id_mapel' => $id_mapel,
+				'nip' => $nip,
+				'hari' => $hari,
+				'jam_mulai' => $jam_mulai,
+				'jam_akhir' => $jam_akhir,
 			];
-
-			
 
 			$affected = $this->Jadwal_model->create($data);
 
@@ -58,14 +58,13 @@ class Jadwal extends CI_Controller {
 				$this->session->set_flashdata('theme', 'success');
 				$this->session->set_flashdata('message', 'Berhasil tambah jadwal');
 				redirect("jadwal");
-
 			} else {
 				$this->session->set_flashdata('theme', 'danger');
 				$this->session->set_flashdata('message', 'Gagal tambah jadwal');
 				redirect("jadwal/add");
 			}
-
 		} else {
+
 			$this->load->view('template/header', $data);
 			$this->load->view('jadwal/add', $data);
 			$this->load->view('template/footer');
@@ -79,43 +78,43 @@ class Jadwal extends CI_Controller {
 		$data = [
 			'title' => 'Ubah Jadwal',
 			'row' => $this->Jadwal_model->getById($id)->row(),
+			'kelas' => $this->Kelas_model->get()->result(),
+			'mapel' => $this->Mapel_model->get()->result(),
+			'guru' => $this->Guru_model->get()->result(),
 		];
 
 		$simpan = $this->input->post('simpan');
 
 		if ($simpan != "") {
-            $id_jadwal = $this->input->post('id_jadwal');
-            $id_kelas = $this->input->post('id_kelas');
-            $id_mapel = $this->input->post('id_mapel');
-            $nip = $this->input->post('nip');
-            $hari = $this->input->post('hari');
-            $jam_mulai = $this->input->post('jam_mulai');
-            $jam_akhir = $this->input->post('jam_akhir');
+			$id_jadwal = $this->input->post('id_jadwal');
+			$id_kelas = $this->input->post('id_kelas');
+			$id_mapel = $this->input->post('id_mapel');
+			$nip = $this->input->post('nip');
+			$hari = $this->input->post('hari');
+			$jam_mulai = $this->input->post('jam_mulai');
+			$jam_akhir = $this->input->post('jam_akhir');
 
 			$id = array('id_jadwal' => $id_jadwal);
 			$data = [
-                'id_jadwal' => $id_jadwal,
-                'id_kelas' => $id_kelas,
-                'id_mapel' => $id_mapel,
-                'nip' => $nip,
-                'hari' => $hari,
-                'jam_mulai' => $jam_mulai,
-                'jam_akhir' => $jam_akhir,
+				'id_jadwal' => $id_jadwal,
+				'id_kelas' => $id_kelas,
+				'id_mapel' => $id_mapel,
+				'nip' => $nip,
+				'hari' => $hari,
+				'jam_mulai' => $jam_mulai,
+				'jam_akhir' => $jam_akhir,
 			];
 
-
-				 $affected = $this->Jadwal_model->update($data, $id);
-				 if ($affected > 0) {
-					$this->session->set_flashdata('theme', 'success');
-				 	$this->session->set_flashdata('message', 'Berhasil edit jadwal');
-				 	redirect("jadwal");
-
-				 } else {
-				 	$this->session->set_flashdata('theme', 'danger');
-				 	$this->session->set_flashdata('message', 'Gagal edit jadwal');
-				 	redirect("jadwal/edit/$id_jadwal");
-				 }
-
+			$affected = $this->Jadwal_model->update($data, $id);
+			if ($affected > 0) {
+				$this->session->set_flashdata('theme', 'success');
+				$this->session->set_flashdata('message', 'Berhasil edit jadwal');
+				redirect("jadwal");
+			} else {
+				$this->session->set_flashdata('theme', 'danger');
+				$this->session->set_flashdata('message', 'Gagal edit jadwal');
+				redirect("jadwal/edit/$id_jadwal");
+			}
 		} else {
 
 			$this->load->view('template/header', $data);
@@ -132,7 +131,6 @@ class Jadwal extends CI_Controller {
 			$this->session->set_flashdata('theme', 'success');
 			$this->session->set_flashdata('message', 'Berhasil hapus jadwal');
 			redirect("jadwal");
-
 		} else {
 			$this->session->set_flashdata('theme', 'danger');
 			$this->session->set_flashdata('message', 'Gagal hapus jadwal');

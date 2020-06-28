@@ -66,9 +66,13 @@ CREATE TABLE `jadwal` (
 -- Dumping data for table `jadwal`
 --
 
-INSERT INTO `jadwal` (`Id_jadwal`, `id_kelas`, `id_mapel`, `nip`, `hari`, `jam_mulai`, `jam_akhir`) VALUES
-(1, 'K001', 'M005', 60700, 'Selasa', '07:00:00', '09:00:00');
-
+INSERT INTO `jadwal` (`id_jadwal`, `id_kelas`, `id_mapel`, `nip`, `hari`, `jam_mulai`, `jam_akhir`) VALUES
+(1, 'K001', 'M005', 60700, 'Selasa', '07:00:00', '09:00:00'),
+(2, 'K002', 'M001', 60680, 'Senin', '07:00:00', '09:00:00'),
+(3, 'K003', 'M002', 60690, 'Rabu', '07:00:00', '09:00:00'),
+(4, 'K004', 'M003', 60670, 'Kamis', '07:00:00', '09:00:00'),
+(5, 'K005', 'M004', 60710, 'Jumat', '07:00:00', '09:00:00'),
+(6, 'K001', 'M001', 60670, 'Selasa', '10:46:00', '11:46:00');
 -- --------------------------------------------------------
 
 --
@@ -121,7 +125,7 @@ INSERT INTO `mapel` (`id_mapel`, `nama_mapel`) VALUES
 --
 
 CREATE TABLE `nilai` (
-  `id_nilai` int(11) NOT NULL,
+  `id_nilai` int(11) NOT NULL AUTO_INCREMENT,
   `nis` int(11) NOT NULL,
   `id_mapel` varchar(11) NOT NULL,
   `tugas1` int(3) NOT NULL,

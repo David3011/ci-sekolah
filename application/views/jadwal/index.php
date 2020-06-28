@@ -44,7 +44,7 @@
 						<td><?= $row->nama_guru ?></td>
 						<td>
 							<a href="<?= site_url('jadwal/edit/' . $row->id_jadwal) ?>" class="btn btn-sm btn-success"> <span class="fas fa-edit"></span> </a>
-							<a href="<?= site_url('jadwal/delete/' . $row->id_jadwal) ?>" class="btn btn-sm btn-danger"> <span class="fas fa-trash-alt"></span> </a>
+							<a href="javascript:void(0)" class="btn btn-sm btn-danger show-confirm" data-del="<?= ('jadwal/delete/' . $row->id_jadwal) ?>"> <span class="fas fa-trash-alt"></span> </a>
 						</td>
 					</tr>
 					<?php endforeach; ?>
