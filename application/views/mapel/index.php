@@ -42,7 +42,7 @@
 						<td><?= $row->nama_mapel ?></td>
 						<td>
 							<a href="<?= site_url('mapel/edit/' . $row->id_mapel) ?>" class="btn btn-sm btn-success"> <span class="fas fa-edit"></span> </a>
-							<a href="<?= site_url('mapel/delete/' . $row->id_mapel) ?>" class="btn btn-sm btn-danger"> <span class="fas fa-trash-alt"></span> </a>
+							<a href="javascript:void(0)" class="btn btn-sm btn-danger show-confirm" data-del="<?= ('mapel/delete/' . $row->id_mapel) ?>"> <span class="fas fa-trash-alt"></span> </a>
 						</td>
 					</tr>
 					<?php endforeach; ?>

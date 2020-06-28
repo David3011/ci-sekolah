@@ -46,7 +46,7 @@
 						<td><?= $row->no_tlp ?></td>
 						<td>
 							<a href="<?= site_url('siswa/edit/' . $row->nis) ?>" class="btn btn-sm btn-success"> <span class="fas fa-edit"></span> </a>
-							<a href="<?= site_url('siswa/delete/' . $row->nis) ?>" class="btn btn-sm btn-danger"> <span class="fas fa-trash-alt"></span> </a>
+							<a href="javascript:void(0)" class="btn btn-sm btn-danger show-confirm" data-del="<?= ('siswa/delete/' . $row->nis) ?>"> <span class="fas fa-trash-alt"></span> </a>
 						</td>
 					</tr>
 					<?php endforeach; ?>

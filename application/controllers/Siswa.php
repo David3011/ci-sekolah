@@ -6,7 +6,7 @@ class Siswa extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Siswa_model');
+		$this->load->model(array('Siswa_model', 'Kelas_model'));
 	}
 
 	public function index()
@@ -25,6 +25,7 @@ class Siswa extends CI_Controller {
 	{
 		$data = [
 			'title' => 'Tambah Siswa',
+			'kelas' => $this->Kelas_model->get()->result(),
 		];
 
 		$simpan = $this->input->post('simpan');
@@ -79,6 +80,7 @@ class Siswa extends CI_Controller {
 		$data = [
 			'title' => 'Ubah Siswa',
 			'row' => $this->Siswa_model->getById($id)->row(),
+			'kelas' => $this->Kelas_model->get()->result(),
 		];
 
 		$simpan = $this->input->post('simpan');

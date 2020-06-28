@@ -44,7 +44,7 @@
 						<td><?= $row->level ?></td>
 						<td>
 							<a href="<?= site_url('petugas/edit/' . $row->id_petugas) ?>" class="btn btn-sm btn-success"> <span class="fas fa-edit"></span> </a>
-							<a href="<?= site_url('petugas/delete/' . $row->id_petugas) ?>" class="btn btn-sm btn-danger"> <span class="fas fa-trash-alt"></span> </a>
+							<a href="javascript:void(0)" class="btn btn-sm btn-danger show-confirm" data-del="<?= ('petugas/delete/' . $row->id_petugas) ?>"> <span class="fas fa-trash-alt"></span> </a>
 						</td>
 					</tr>
 					<?php endforeach; ?>

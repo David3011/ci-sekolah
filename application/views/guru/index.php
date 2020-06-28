@@ -46,7 +46,7 @@
 						<td><?= $row->nohp ?></td>
 						<td>
 							<a href="<?= site_url('guru/edit/' . $row->nip) ?>" class="btn btn-sm btn-success"> <span class="fas fa-edit"></span> </a>
-							<a href="<?= site_url('guru/delete/' . $row->nip) ?>" class="btn btn-sm btn-danger"> <span class="fas fa-trash-alt"></span> </a>
+							<a href="javascript:void(0)" class="btn btn-sm btn-danger show-confirm" data-del="<?= ('guru/delete/' . $row->nip) ?>"> <span class="fas fa-trash-alt"></span> </a>
 						</td>
 					</tr>
 					<?php endforeach; ?>

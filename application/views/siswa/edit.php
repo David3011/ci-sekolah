@@ -30,11 +30,11 @@
 					<label for="kelas">Kelas</label>
 					<select id="kelas" name="kelas" class="form-control">
 						<option selected>Pilih...</option>
-						<option value="K001" <?= $row->id_kelas == 'K001' ? 'selected' : '' ?>>7A</option>
-						<option value="K002" <?= $row->id_kelas == 'K002' ? 'selected' : '' ?>>7B</option>
-						<option value="K003" <?= $row->id_kelas == 'K003' ? 'selected' : '' ?>>7C</option>
-						<option value="K004" <?= $row->id_kelas == 'K004' ? 'selected' : '' ?>>7D</option>
-						<option value="K005" <?= $row->id_kelas == 'K005' ? 'selected' : '' ?>>7E</option>
+						<?php
+							foreach ($kelas as $r) :
+						?>
+						<option value="<?= $r->id_kelas ?>" <?= $row->id_kelas == $r->id_kelas ? 'selected' : '' ?>><?= $r->nama_kelas ?></option>
+						<?php endforeach; ?>
 					</select>
 				</div>
 				<div class="form-group">
@@ -44,14 +44,14 @@
 				<div class="form-row">
 					<div class="form-group col-md-4">
 						<label for="nohp">No Telp</label>
-						<input type="text" class="form-control" id="nohp" name="nohp" value="<?= $row->no_tlp ?>">
+						<input type="number" class="form-control" id="nohp" name="nohp" value="<?= $row->no_tlp ?>">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="tempat_lahir">TTL</label>
 						<input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" value="<?= $row->tempat_lahir ?>">
 					</div>
 					<div class="form-group col-md-4">
-						<label for="ttl"></label>
+						<label for="ttl">&nbsp;</label>
 						<input type="date" class="form-control" id="ttl" name="ttl" value="<?= $row->ttl ?>">
 					</div>
 				</div>
@@ -65,8 +65,8 @@
 					</select>
 					</div>
 					<div class="form-group col-md-6">
-					<label for="level">Agama</label>
-					<select id="level" name="level" class="form-control">
+					<label for="agama">Agama</label>
+					<select id="agama" name="agama" class="form-control">
 						<option selected>Pilih...</option>
 						<option value="Islam" <?= $row->agama == 'Islam' ? 'selected' : '' ?>>Islam</option>
 						<option value="Kristen" <?= $row->agama == 'Kristen' ? 'selected' : '' ?>>Kristen</option>

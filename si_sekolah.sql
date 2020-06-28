@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 24, 2020 at 08:11 AM
+-- Generation Time: Jun 28, 2020 at 03:17 AM
 -- Server version: 10.1.40-MariaDB
 -- PHP Version: 7.3.5
 
@@ -53,7 +53,7 @@ INSERT INTO `guru` (`nip`, `nama_guru`, `alamat`, `nohp`) VALUES
 --
 
 CREATE TABLE `jadwal` (
-  `Id_jadwal` int(11) NOT NULL,
+  `id_jadwal` int(11) NOT NULL,
   `id_kelas` varchar(10) NOT NULL,
   `id_mapel` varchar(11) NOT NULL,
   `nip` int(11) NOT NULL,
@@ -182,6 +182,7 @@ CREATE TABLE `siswa` (
   `nis` int(11) NOT NULL,
   `id_kelas` varchar(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
+  `tempat_lahir` varchar(30) NOT NULL,
   `ttl` date NOT NULL,
   `agama` varchar(10) NOT NULL,
   `gender` varchar(2) NOT NULL,
@@ -193,12 +194,12 @@ CREATE TABLE `siswa` (
 -- Dumping data for table `siswa`
 --
 
-INSERT INTO `siswa` (`nis`, `id_kelas`, `nama`, `ttl`, `agama`, `gender`, `alamat`, `no_tlp`) VALUES
-(1468024, 'K001', 'Dedo Suharman', '1997-04-23', 'Katolik', 'L', 'Kendang Asri 6 Blok B No 666, Juanda, Sidoarjo', '08136890231'),
-(1468123, 'K001', 'Faizul Hafoz', '1998-02-12', 'Islam', 'L', 'Perum Ploso Regency, Ploso, Surabaya', '08168389123'),
-(1468525, 'K001', 'Sholiqul Asiz', '1998-06-13', 'Kristen', 'L', 'Mutiara Citra Asri No 31, Candi, Sidoarjo', '08762538'),
-(1468707, 'K001', 'Afdol Riziq', '1996-01-01', 'Islam', 'L', 'Perum Kapal Selam Blok X No 555, Perak, Surabaya', '08856254678'),
-(14618012, 'K001', 'Rizki Febigin', '1998-05-18', 'Islam', 'L', 'Geriskan Lor V No 51, Kebungson, Gresik', '08576782121');
+INSERT INTO `siswa` (`nis`, `id_kelas`, `nama`, `tempat_lahir`, `ttl`, `agama`, `gender`, `alamat`, `no_tlp`) VALUES
+(1468024, 'K001', 'Dedo Suharman', 'Sidoarjo', '1997-04-23', 'Katolik', 'L', 'Kendang Asri 6 Blok B No 666, Juanda, Sidoarjo', '08136890231'),
+(1468123, 'K001', 'Faizul Hafoz', 'Surabaya', '1998-02-12', 'Islam', 'L', 'Perum Ploso Regency, Ploso, Surabaya', '08168389123'),
+(1468525, 'K001', 'Sholiqul Asiz', 'Sidoarjo', '1998-06-13', '', 'L', 'Pabean Regency Blok D No 99, Tulangan, Sidoarjo', '082635182418'),
+(1468707, 'K001', 'Afdol Riziq', 'Magetan', '1996-01-01', 'Islam', 'L', 'Perum Kapal Selam Blok X No 555, Perak, Surabaya', '08856254678'),
+(14618012, 'K001', 'Rizki Febigin', 'Gresik', '1998-05-18', 'Islam', 'L', 'Geriskan Lor V No 51, Kebungson, Gresik', '08576782121');
 
 --
 -- Indexes for dumped tables

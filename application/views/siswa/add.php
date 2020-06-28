@@ -34,24 +34,24 @@
 				<label for="kelas">Kelas</label>
 					<select id="kelas" name="kelas" class="form-control">
 						<option selected>Pilih...</option>
-						<option value="K001">7A</option>
-						<option value="K002">7B</option>
-						<option value="K003">7C</option>
-						<option value="K004">7D</option>
-						<option value="K005">7E</option>
+						<?php
+							foreach ($kelas as $row) :
+						?>
+						<option value="<?= $row->id_kelas ?>"><?= $row->nama_kelas ?></option>
+						<?php endforeach; ?>
 					</select>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-4">
 						<label for="nohp">No Telp</label>
-						<input type="text" class="form-control" id="nohp" name="nohp">
+						<input type="number" class="form-control" id="nohp" name="nohp">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="tempat_lahir">TTL</label>
 						<input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir">
 					</div>
                     <div class="form-group col-md-4">
-						<label for="ttl"></label>
+						<label for="ttl">&nbsp;</label>
 						<input type="date" class="form-control" id="ttl" name="ttl">
 					</div>
 				</div>

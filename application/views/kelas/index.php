@@ -42,7 +42,7 @@
 						<td><?= $row->keterangan ?></td>
 						<td>
 							<a href="<?= site_url('kelas/edit/' . $row->id_kelas) ?>" class="btn btn-sm btn-success"> <span class="fas fa-edit"></span> </a>
-							<a href="<?= site_url('kelas/delete/' . $row->id_kelas) ?>" class="btn btn-sm btn-danger"> <span class="fas fa-trash-alt"></span> </a>
+							<a href="javascript:void(0)" class="btn btn-sm btn-danger show-confirm" data-del="<?= ('kelas/delete/' . $row->id_kelas) ?>"> <span class="fas fa-trash-alt"></span> </a>
 						</td>
 					</tr>
 					<?php endforeach; ?>
