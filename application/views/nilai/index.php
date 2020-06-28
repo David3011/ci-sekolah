@@ -1,10 +1,10 @@
 <div class="container-fluid mt-4">
 
-	<h4>Data Kelas</h4>
+	<h4>Data Nilai</h4>
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="<?= site_url("dashboard") ?>">Dashboard</a></li>
-			<li class="breadcrumb-item active" aria-current="page">Kelas</li>
+			<li class="breadcrumb-item active" aria-current="page">Nilai</li>
 		</ol>
 	</nav>
 
@@ -13,8 +13,6 @@
 			<?= $this->session->flashdata('message'); ?>
 		</div>
 	<?php endif; ?>
-
-	<a href="<?= site_url('kelas/add') ?>" class="btn btn-outline-primary"><span class="fas fa-plus"></span> Tambah</a>
 
 	<div class="card mt-2">
 		<div class="card-header">
@@ -26,6 +24,7 @@
 				<thead>
 					<tr>
 						<th width="80px">No</th>
+						<th>ID Kelas</th>
 						<th>Nama</th>
 						<th>Keterangan</th>
 						<th width="100px">Aksi</th>
@@ -38,11 +37,12 @@
 					?>
 					<tr>
 						<td><?= $no++ ?></td>
+						<td><?= $row->id_kelas ?></td>
 						<td><?= $row->nama_kelas ?></td>
 						<td><?= $row->keterangan ?></td>
 						<td>
-							<a href="<?= site_url('kelas/edit/' . $row->id_kelas) ?>" class="btn btn-sm btn-success"> <span class="fas fa-edit"></span> </a>
-							<a href="javascript:void(0)" class="btn btn-sm btn-danger show-confirm" data-del="<?= ('kelas/delete/' . $row->id_kelas) ?>"> <span class="fas fa-trash-alt"></span> </a>
+							<a href="<?= site_url('nilai/mapel/' . $row->id_kelas) ?>" class="btn btn-sm btn-info"> <span class="fas fa-eye"></span> </a>
+							
 						</td>
 						
 					</tr>
@@ -51,6 +51,7 @@
 				<tfoot>
 					<tr>
 						<th width="80px">No</th>
+						<th>ID Kelas</td>
 						<th>Nama</th>
 						<th>Keterangan</th>
 						<th>Aksi</th>

@@ -1,9 +1,10 @@
 <div class="container-fluid mt-4">
 
-	<h4>Data Kelas</h4>
+	<h4>Data Nilai</h4>
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="<?= site_url("dashboard") ?>">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="<?= site_url("nilai") ?>">Nilai</a></li>
 			<li class="breadcrumb-item active" aria-current="page">Kelas</li>
 		</ol>
 	</nav>
@@ -14,11 +15,11 @@
 		</div>
 	<?php endif; ?>
 
-	<a href="<?= site_url('kelas/add') ?>" class="btn btn-outline-primary"><span class="fas fa-plus"></span> Tambah</a>
+
 
 	<div class="card mt-2">
 		<div class="card-header">
-			Tabel Kelas
+			Tabel Mapel
 		</div>
 		<div class="card-body">
 
@@ -26,33 +27,32 @@
 				<thead>
 					<tr>
 						<th width="80px">No</th>
+						<th>ID Mapel</th>
 						<th>Nama</th>
-						<th>Keterangan</th>
 						<th width="100px">Aksi</th>
 					</tr>
 				</thead>
 				<tbody>
 					<?php
 						$no = 1;
-						foreach ($kelas as $row) :
+						foreach ($mapel as $row) :
 					?>
 					<tr>
 						<td><?= $no++ ?></td>
-						<td><?= $row->nama_kelas ?></td>
-						<td><?= $row->keterangan ?></td>
+						<td><?= $row->id_mapel ?></td>
+						<td><?= $row->nama_mapel ?></td>
 						<td>
-							<a href="<?= site_url('kelas/edit/' . $row->id_kelas) ?>" class="btn btn-sm btn-success"> <span class="fas fa-edit"></span> </a>
-							<a href="javascript:void(0)" class="btn btn-sm btn-danger show-confirm" data-del="<?= ('kelas/delete/' . $row->id_kelas) ?>"> <span class="fas fa-trash-alt"></span> </a>
+							<a href="<?= site_url('nilai/nilai/' . $row->id_kelas . '/'  . $row->id_mapel) ?>" class="btn btn-sm btn-info"> <span class="fas fa-eye"></span> </a>
+							
 						</td>
-						
 					</tr>
 					<?php endforeach; ?>
 				</tbody>
 				<tfoot>
 					<tr>
 						<th width="80px">No</th>
+						<th>ID Mapel</th>
 						<th>Nama</th>
-						<th>Keterangan</th>
 						<th>Aksi</th>
 					</tr>
 				</tfoot>
