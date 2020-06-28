@@ -125,7 +125,7 @@ INSERT INTO `mapel` (`id_mapel`, `nama_mapel`) VALUES
 --
 
 CREATE TABLE `nilai` (
-  `id_nilai` int(11) NOT NULL AUTO_INCREMENT,
+  `id_nilai` int(11) NOT NULL,
   `nis` int(11) NOT NULL,
   `id_mapel` varchar(11) NOT NULL,
   `tugas1` int(3) NOT NULL,
@@ -256,6 +256,12 @@ ALTER TABLE `petugas`
 ALTER TABLE `siswa`
   ADD PRIMARY KEY (`nis`),
   ADD KEY `siswa menempati kelas` (`id_kelas`);
+
+--
+-- AUTO_INCREMENT untuk tabel `nilai`
+--
+ALTER TABLE `nilai`
+  MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
